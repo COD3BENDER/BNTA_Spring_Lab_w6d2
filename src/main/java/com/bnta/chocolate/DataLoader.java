@@ -1,7 +1,9 @@
 package com.bnta.chocolate;
 
 import com.bnta.chocolate.models.Chocolate;
+import com.bnta.chocolate.models.Estate;
 import com.bnta.chocolate.repositories.ChocolateRepository;
+import com.bnta.chocolate.repositories.EstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,65 +18,36 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ChocolateRepository chocolateRepository;
 
+    @Autowired
+    EstateRepository estateRepository;
+
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        List<String> chocolates = Arrays.asList(
-                "safari",
-                "volcano",
-                "throne",
-                "constraint",
-                "copper",
-                "fence",
-                "porter",
-                "grandfather",
-                "oral",
-                "enemy",
-                "cry",
-                "gate",
-                "different",
-                "harmony",
-                "dream",
-                "management",
-                "finance",
-                "set",
-                "display",
-                "burn",
-                "frank",
-                "overcharge",
-                "heron",
-                "inappropriate",
-                "dose",
-                "hover",
-                "literacy",
-                "campaign",
-                "twin",
-                "revenge",
-                "swallow",
-                "ignore",
-                "rack",
-                "treatment",
-                "government",
-                "weight",
-                "beard",
-                "insurance",
-                "sum",
-                "sail",
-                "creation",
-                "soldier",
-                "develop",
-                "parking",
-                "permanent",
-                "surprise",
-                "virgil",
-                "lie",
-                "valley",
-                "hell"
+        List<Chocolate> chocolates = Arrays.asList(
+                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
+                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
+                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
+                new Chocolate("Bountly",10,new Estate("Havana","Brazil"))
+                );
+
+        List<Estate> estates = Arrays.asList( new Estate("Havana","Brazil"),
+                new Estate("Havana","Brazil"),
+                new Estate("Havana","Brazil"),
+                new Estate("Havana","Brazil")
         );
 
-        for (String rawWord : chocolates) {
-            Chocolate chocolate = new Chocolate(chocolates);
-            chocolateRepository.save(chocolate);
+
+
+        for (Chocolate chocolate : chocolates) {
+            Chocolate chocolateName = new Chocolate(chocolate.getName(),chocolate.getCocoaPercentage(),chocolate.getEstate());
+            chocolateRepository.save(chocolateName);
+        }
+
+        for (Estate estate : estates) {
+            Estate estateName = new Estate(estate.getName(), estate.getCountry());
+            estateRepository.save(estateName);
         }
 
     }
