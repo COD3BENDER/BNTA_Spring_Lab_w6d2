@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public class Estate {
+    //init
 
 
     private Long id;
