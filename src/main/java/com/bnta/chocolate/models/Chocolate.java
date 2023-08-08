@@ -1,19 +1,25 @@
 package com.bnta.chocolate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
-
+@Entity(name = "chocolates")
 public class Chocolate {
 
-
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column
     private String name;
 
+    @Column
     private int cocoaPercentage;
 
-
+    @ManyToOne
+    @JoinColumn(name = "estate_id") //this property is what it has in common with Player
+    @JsonIgnoreProperties({"chocolates"}) // we want to ignore otherwise will have infinite recursion
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {

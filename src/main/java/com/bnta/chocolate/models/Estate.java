@@ -7,20 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Entity(name = "estates")
 public class Estate {
     //init
-
-
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column
     private String name;
 
-
+    @Column
     private String country;
 
-
+    @OneToMany
+    @JoinColumn(name = "chocolate_id") //this property is what it has in common with Player
+    @JsonIgnoreProperties({"estates"}) // we want to ignore otherwise will have infinite recursion
     private List<Chocolate> chocolates;
 
     public Estate(String name, String country) {
