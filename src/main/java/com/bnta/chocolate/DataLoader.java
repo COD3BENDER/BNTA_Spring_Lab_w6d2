@@ -23,22 +23,20 @@ public class DataLoader implements ApplicationRunner {
 
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
 
         List<Chocolate> chocolates = Arrays.asList(
-                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
-                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
-                new Chocolate("Bountly",10,new Estate("Havana","Brazil")),
-                new Chocolate("Bountly",10,new Estate("Havana","Brazil"))
+                new Chocolate("Bounty",10,new Estate("Havana","Cuba")),
+                new Chocolate("Bounty",10,new Estate("Havana","Cuba")),
+                new Chocolate("Bounty",10,new Estate("Havana","Cuba")),
+                new Chocolate("Bounty",10,new Estate("Havana","Cuba"))
                 );
 
         List<Estate> estates = Arrays.asList( new Estate("Havana","Brazil"),
-                new Estate("Havana","Brazil"),
-                new Estate("Havana","Brazil"),
-                new Estate("Havana","Brazil")
+                new Estate("Havana","Cuba"),
+                new Estate("Havana","Cuba"),
+                new Estate("Havana","Cuba")
         );
-
-
 
         for (Chocolate chocolate : chocolates) {
             Chocolate chocolateName = new Chocolate(chocolate.getName(),chocolate.getCocoaPercentage(),chocolate.getEstate());

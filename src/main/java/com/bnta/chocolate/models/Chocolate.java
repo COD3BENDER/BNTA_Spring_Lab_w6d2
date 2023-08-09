@@ -17,7 +17,7 @@ public class Chocolate {
     @Column
     private int cocoaPercentage;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST) // this allows us to use dataloader
     @JoinColumn(name = "estate_id") //this property is what it has in common with Player
     @JsonIgnoreProperties({"chocolates"}) // we want to ignore otherwise will have infinite recursion
     private Estate estate;

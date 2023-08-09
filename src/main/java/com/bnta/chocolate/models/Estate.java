@@ -20,7 +20,7 @@ public class Estate {
     @Column
     private String country;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL) // this allows us to use dataloader
     @JoinColumn(name = "chocolate_id") //this property is what it has in common with Player
     @JsonIgnoreProperties({"estates"}) // we want to ignore otherwise will have infinite recursion
     private List<Chocolate> chocolates;
