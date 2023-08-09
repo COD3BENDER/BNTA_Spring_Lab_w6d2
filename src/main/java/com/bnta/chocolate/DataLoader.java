@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
                 new Chocolate("Bounty",10,new Estate("Havana","Cuba"))
                 );
 
-        List<Estate> estates = Arrays.asList( new Estate("Havana","Brazil"),
+        List<Estate> estates = Arrays.asList( new Estate("Havana","Cuba"),
                 new Estate("Havana","Cuba"),
                 new Estate("Havana","Cuba"),
                 new Estate("Havana","Cuba")
